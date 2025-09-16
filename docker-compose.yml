@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    network_mode: service:app
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7
+    container_name: mental-health-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mental-health-app
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - mental-health-network
+
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:3001/api
+    depends_on:
+      - mongo
+    networks:
+      - mental-health-network
+    profiles:
+      - development
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: mental-health-web
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:3001/api
+    depends_on:
+      - server
+    networks:
+      - mental-health-network
+    profiles:
+      - production
+
+  server:
+    build:
+      context: ./apps/server
+      dockerfile: Dockerfile
+    container_name: mental-health-server
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/mental-health-app
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      - mongo
+    networks:
+      - mental-health-network
+    profiles:
+      - production
+
+volumes:
+  mongo_data:
+
+networks:
+  mental-health-network:
+    driver: bridge

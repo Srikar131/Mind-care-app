@@ -1,0 +1,42 @@
+services:
+  # Frontend (Static Site)
+  - type: web
+    name: mental-health-app-web
+    env: static
+    buildCommand: npm install && npm run build:web
+    staticPublishPath: ./apps/web/dist
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_BASE_URL
+        value: https://mental-health-app-api.onrender.com/api
+
+  # Backend API
+  - type: web
+    name: mental-health-app-api
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build:server
+    startCommand: npm run start:server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGO_URI
+        fromDatabase:
+          name: mental-health-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://mental-health-app-web.onrender.com
+
+databases:
+  - name: mental-health-db
+    databaseName: mental-health-app
+    user: mental-health-user
