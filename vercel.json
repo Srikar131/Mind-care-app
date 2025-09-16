@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "mindcare-app",
+  "builds": [
+    {
+      "src": "apps/web/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/web/dist/index.html"
+    }
+  ],
+  "functions": {
+    "apps/web/dist/**": {
+      "includeFiles": "apps/web/dist/**"
+    }
+  }
+}
