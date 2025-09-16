@@ -6,7 +6,7 @@ export async function connectDB(uri: string): Promise<void> {
     await mongoose.connect(uri)
     logger.info('Connected to MongoDB')
   } catch (error) {
-    logger.error('MongoDB connection error:', error)
+    logger.error({ error: error as Error }, 'MongoDB connection error')
     process.exit(1)
   }
 }
@@ -16,6 +16,6 @@ export async function disconnectDB(): Promise<void> {
     await mongoose.disconnect()
     logger.info('Disconnected from MongoDB')
   } catch (error) {
-    logger.error('MongoDB disconnection error:', error)
+    logger.error({ error: error as Error }, 'MongoDB disconnection error')
   }
 }

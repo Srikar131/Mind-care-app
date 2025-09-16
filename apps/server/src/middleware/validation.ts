@@ -21,7 +21,7 @@ export function validate(schema: z.ZodSchema) {
           return acc
         }, {} as Record<string, string[]>)
 
-        logger.warn('Validation error:', { errors, path: req.path })
+        logger.warn({ errors, path: req.path }, 'Validation error')
         
         res.status(400).json({
           message: 'Validation error',
@@ -34,7 +34,7 @@ export function validate(schema: z.ZodSchema) {
       Object.assign(req.body, result.data)
       next()
     } catch (error) {
-      logger.error('Validation middleware error:', error)
+      logger.error({ error: error as Error }, 'Validation middleware error')
       res.status(500).json({ message: 'Internal server error' })
     }
   }

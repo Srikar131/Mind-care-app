@@ -41,7 +41,7 @@ app.use(cookieParser())
 app.use('/api', apiRateLimit)
 
 // Health check
-app.get('/healthz', (req, res) => {
+app.get('/healthz', (_req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
@@ -54,19 +54,19 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 
 // Placeholder routes for future implementation
-app.get('/api/chat/sessions', (req, res) => {
+app.get('/api/chat/sessions', (_req, res) => {
   res.json({ message: 'Chat sessions endpoint - coming soon' })
 })
 
-app.post('/api/chat', (req, res) => {
+app.post('/api/chat', (_req, res) => {
   res.json({ message: 'Chat endpoint - coming soon' })
 })
 
-app.get('/api/notes', (req, res) => {
+app.get('/api/notes', (_req, res) => {
   res.json({ message: 'Notes endpoint - coming soon' })
 })
 
-app.get('/api/mood', (req, res) => {
+app.get('/api/mood', (_req, res) => {
   res.json({ message: 'Mood tracking endpoint - coming soon' })
 })
 
@@ -87,7 +87,7 @@ async function startServer() {
       logger.info(`CORS origin: ${config.CORS_ORIGIN}`)
     })
   } catch (error) {
-    logger.error('Failed to start server:', error)
+    logger.error({ error: error as Error }, 'Failed to start server')
     process.exit(1)
   }
 }

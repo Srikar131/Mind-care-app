@@ -42,7 +42,7 @@ export async function authenticate(
       return
     }
 
-    ;(req as AuthenticatedRequest).user = {
+    (req as AuthenticatedRequest).user = {
       userId: payload.userId,
       email: payload.email,
       roles: payload.roles,
@@ -50,7 +50,7 @@ export async function authenticate(
 
     next()
   } catch (error) {
-    logger.error('Authentication error:', error)
+    logger.error({ error: error as Error }, 'Authentication error')
     res.status(401).json({ message: 'Invalid or expired token' })
   }
 }

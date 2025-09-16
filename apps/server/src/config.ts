@@ -13,7 +13,7 @@ const configSchema = z.object({
   JWT_REFRESH_SECRET: z.string().min(32, 'JWT refresh secret must be at least 32 characters'),
   JWT_EXPIRES_IN: z.string().default('15m'),
   JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
-  OPENAI_API_KEY: z.string().min(1, 'OpenAI API key is required'),
+  OPENAI_API_KEY: z.string().optional(),
   CORS_ORIGIN: z.string().default('http://localhost:3000'),
   LOG_LEVEL: z.enum(['trace', 'debug', 'info', 'warn', 'error']).default('info'),
   SEED_DEMO: z.string().transform(val => val === 'true').default('false'),
