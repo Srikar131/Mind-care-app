@@ -47,7 +47,10 @@ export interface IMoodLog {
   userId: string
   score: number
   noteId?: string
+  tags: string[]
+  notes?: string
   createdAt: Date
+  updatedAt: Date
 }
 
 export interface ITokenBlacklist {

@@ -12,19 +12,27 @@ const moodLogSchema = new mongoose.Schema<IMoodLog>(
       type: Number,
       required: true,
       min: 1,
-      max: 5,
+      max: 10,
       validate: {
         validator: Number.isInteger,
-        message: 'Mood score must be an integer between 1 and 5',
+        message: 'Mood score must be an integer between 1 and 10',
       },
     },
     noteId: {
       type: String,
       ref: 'Note',
     },
+    tags: [{
+      type: String,
+      maxlength: 50,
+    }],
+    notes: {
+      type: String,
+      maxlength: 500,
+    },
   },
   {
-    timestamps: { createdAt: true, updatedAt: false },
+    timestamps: { createdAt: true, updatedAt: true },
   }
 )
 

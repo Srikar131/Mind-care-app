@@ -13,6 +13,9 @@ import { errorHandler, notFound } from './middleware/errorHandler.js'
 // Routes
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
+import chatRoutes from './routes/chat.js'
+import notesRoutes from './routes/notes.js'
+import moodRoutes from './routes/mood.js'
 
 const config = getConfig()
 const app = express()
@@ -52,22 +55,13 @@ app.get('/healthz', (_req, res) => {
 // API routes
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/chat', chatRoutes)
+app.use('/api/notes', notesRoutes)
+app.use('/api/mood', moodRoutes)
 
-// Placeholder routes for future implementation
+// Legacy placeholder routes (remove after frontend is updated)
 app.get('/api/chat/sessions', (_req, res) => {
-  res.json({ message: 'Chat sessions endpoint - coming soon' })
-})
-
-app.post('/api/chat', (_req, res) => {
-  res.json({ message: 'Chat endpoint - coming soon' })
-})
-
-app.get('/api/notes', (_req, res) => {
-  res.json({ message: 'Notes endpoint - coming soon' })
-})
-
-app.get('/api/mood', (_req, res) => {
-  res.json({ message: 'Mood tracking endpoint - coming soon' })
+  res.status(301).json({ message: 'Moved to /api/chat/sessions' })
 })
 
 // Error handling
