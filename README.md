@@ -170,11 +170,7 @@ We welcome contributions from developers, designers, and mental health professio
 
 ---
 
-## 📜 **License**
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 👨‍💻 **About the Developer**
 
@@ -183,8 +179,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ### **Srikar Vaka**
 *Full Stack Developer & Mental Health Advocate*
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourusername)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/srikar131)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/srikar-v-b86b93256/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://yourportfolio.com)
 
 *"Technology should serve humanity, especially in our most vulnerable moments."*
@@ -196,8 +192,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 📞 **Support & Contact**
 
 - 💬 **Issues:** [GitHub Issues](https://github.com/yourusername/mindcare-app/issues)
-- 📧 **Email:** your.email@example.com
-- 🐦 **Twitter:** [@yourusername](https://twitter.com/yourusername)
+- 📧 **Email:** srikarvaka1@gmail.com
+- 🐦 **Linkedin:** [@Srikar .V](https://www.linkedin.com/in/srikar-v-b86b93256/)
 
 ---
 
