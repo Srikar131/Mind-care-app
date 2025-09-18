@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/badge/JavaScript-ES6+-f7df1e?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
 <img src="https://img.shields.io/badge/Status-Live-00ff00?style=for-the-badge" alt="Status" />
 
-**[🚀 Live Demo](https://mindcare-app.vercel.app)** • **[📖 Documentation](#features)** • **[🤝 Contributing](#contributing)**
+**[🚀 Live Demo](https://mindxcare.netlify.app/)** 
 
 *Transforming mental wellness through technology*
 
