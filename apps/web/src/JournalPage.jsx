@@ -346,7 +346,7 @@ function JournalPage({ onBack }) {
             {/* Title Input */}
             <input
               type="text"
-              placeholder="What's on your mind today?"
+              placeholder="What's on your mind today 🐒?"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               style={{
@@ -373,7 +373,7 @@ function JournalPage({ onBack }) {
                 How are you feeling?
               </label>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {['😊', '😢', '😤', '😰', '🥳', '😴', '🤔', '😍', '😕', '🤗'].map(emojiOption => (
+                {['🐒', '😊', '😢', '😤', '😰', '🥳', '😴', '🤔', '😍', '😕', '🤗'].map(emojiOption => (
                   <button
                     key={emojiOption}
                     onClick={() => setMood(emojiOption)}
@@ -394,7 +394,7 @@ function JournalPage({ onBack }) {
 
             {/* Content Textarea */}
             <textarea
-              placeholder="Write about your thoughts, feelings, experiences, or anything that's important to you right now..."
+              placeholder="Write about your thoughts, feelings, experiences, or anything that's important to you right now as I'm not available to listen 🐒..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
               style={{

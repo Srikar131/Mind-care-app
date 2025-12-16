@@ -622,7 +622,7 @@ function DashboardPage({ onLogout, onNavigate }) {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            "Your mental health journey is unique. Every small step counts." ✨
+            "Your mental health journey is unique. Every small step counts Kavya." ✨
           </p>
         </div>
       </div>
@@ -702,7 +702,7 @@ function DashboardPage({ onLogout, onNavigate }) {
               margin: 0,
               fontWeight: '500'
             }}>
-              Complete Mental Health & Productivity Platform • Made with ❤️
+              Complete Mental Health & Productivity Platform • Made with ❤️ for 🐒
             </p>
           </div>
         </div>
