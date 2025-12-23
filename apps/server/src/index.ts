@@ -13,6 +13,9 @@ import { errorHandler, notFound } from './middleware/errorHandler.js'
 // Routes
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
+import chatRoutes from './routes/chat.js'
+import notesRoutes from './routes/notes.js'
+import moodRoutes from './routes/mood.js'
 
 const config = getConfig()
 const app = express()
@@ -41,7 +44,7 @@ app.use(cookieParser())
 app.use('/api', apiRateLimit)
 
 // Health check
-app.get('/healthz', (req, res) => {
+app.get('/healthz', (_req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
@@ -52,22 +55,13 @@ app.get('/healthz', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/chat', chatRoutes)
+app.use('/api/notes', notesRoutes)
+app.use('/api/mood', moodRoutes)
 
-// Placeholder routes for future implementation
-app.get('/api/chat/sessions', (req, res) => {
-  res.json({ message: 'Chat sessions endpoint - coming soon' })
-})
-
-app.post('/api/chat', (req, res) => {
-  res.json({ message: 'Chat endpoint - coming soon' })
-})
-
-app.get('/api/notes', (req, res) => {
-  res.json({ message: 'Notes endpoint - coming soon' })
-})
-
-app.get('/api/mood', (req, res) => {
-  res.json({ message: 'Mood tracking endpoint - coming soon' })
+// Legacy placeholder routes (remove after frontend is updated)
+app.get('/api/chat/sessions', (_req, res) => {
+  res.status(301).json({ message: 'Moved to /api/chat/sessions' })
 })
 
 // Error handling
@@ -87,7 +81,7 @@ async function startServer() {
       logger.info(`CORS origin: ${config.CORS_ORIGIN}`)
     })
   } catch (error) {
-    logger.error('Failed to start server:', error)
+    logger.error({ error: error as Error }, 'Failed to start server')
     process.exit(1)
   }
 }

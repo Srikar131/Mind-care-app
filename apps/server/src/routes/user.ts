@@ -8,9 +8,9 @@ import { logger } from '@/utils/logger.js'
 const router = Router()
 
 // Get current user
-router.get('/me', authenticate, async (req: AuthenticatedRequest, res) => {
+router.get('/me', authenticate, async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId)
+    const user = await User.findById((req as any).user.userId)
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }
@@ -23,9 +23,9 @@ router.get('/me', authenticate, async (req: AuthenticatedRequest, res) => {
 })
 
 // Update user profile
-router.patch('/me', authenticate, validate(updateUserSchema), async (req: AuthenticatedRequest, res) => {
+router.patch('/me', authenticate, validate(updateUserSchema), async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId)
+    const user = await User.findById((req as any).user.userId)
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }
@@ -51,9 +51,9 @@ router.patch('/me', authenticate, validate(updateUserSchema), async (req: Authen
 })
 
 // Delete user account (soft delete)
-router.delete('/me', authenticate, async (req: AuthenticatedRequest, res) => {
+router.delete('/me', authenticate, async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId)
+    const user = await User.findById((req as any).user.userId)
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }

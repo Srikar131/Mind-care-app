@@ -32,15 +32,17 @@ export const createSessionSchema = z.object({
 export const noteSchema = z.object({
   title: z.string().min(1, 'Note title is required').max(200, 'Title too long'),
   content: z.string().min(1, 'Note content is required'),
-  mood: z.number().int().min(1).max(5).optional(),
+  mood: z.number().int().min(1).max(10).optional(),
   tags: z.array(z.string()).default([]),
 })
 
 export const updateNoteSchema = noteSchema.partial()
 
 export const moodLogSchema = z.object({
-  score: z.number().int().min(1).max(5),
+  score: z.number().int().min(1).max(10),
   noteId: z.string().optional(),
+  tags: z.array(z.string().max(50)).max(10).default([]),
+  notes: z.string().max(500).optional(),
 })
 
 export const updateUserSchema = z.object({

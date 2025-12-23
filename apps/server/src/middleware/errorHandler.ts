@@ -5,15 +5,15 @@ export function errorHandler(
   error: Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void {
-  logger.error('Unhandled error:', {
+  logger.error({
     error: error.message,
     stack: error.stack,
     path: req.path,
     method: req.method,
     ip: req.ip,
-  })
+  }, 'Unhandled error')
 
   // Don't expose error details in production
   const message = process.env.NODE_ENV === 'production' 

@@ -20,10 +20,10 @@ const noteSchema = new mongoose.Schema<INote>(
     mood: {
       type: Number,
       min: 1,
-      max: 5,
+      max: 10,
       validate: {
         validator: Number.isInteger,
-        message: 'Mood must be an integer between 1 and 5',
+        message: 'Mood must be an integer between 1 and 10',
       },
     },
     tags: {

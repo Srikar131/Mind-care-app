@@ -55,7 +55,7 @@ router.post('/register', authRateLimit, validate(registerSchema), async (req, re
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     })
 
-    logger.info('User registered successfully', { userId: user._id, email })
+    logger.info({ userId: user._id, email }, 'User registered successfully')
 
     res.status(201).json({
       message: 'User registered successfully',
@@ -229,7 +229,7 @@ router.post('/forgot', authRateLimit, validate(forgotPasswordSchema), async (req
 // Reset password (placeholder)
 router.post('/reset', authRateLimit, validate(resetPasswordSchema), async (req, res) => {
   try {
-    const { token, password } = req.body
+    const { token } = req.body
 
     // TODO: Implement token verification and password reset logic
     logger.info('Password reset attempted', { token })
